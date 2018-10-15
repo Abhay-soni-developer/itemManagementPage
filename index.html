@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Master Management Page</title>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="assets/stylesheets/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Chakra+Petch" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script src="scripts/item.js"></script>
+    <script src="scripts/itemOperations.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/factory.js"></script>
+    <script src="scripts/controller.js"></script>
+</head>
+
+<body ng-app="productManagement">
+    <div id="product-management" ng-controller="pm-controller">
+        <div id="title">
+            <h1>Item Management System</h1>
+        </div>
+        <div id="itemManagement">
+            <div id="item-detail">
+                <div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">ID</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Item ID" aria-label="Username"
+                            aria-describedby="basic-addon1" id="item-id" ng-model="item.id" ng-disabled="idBarStatus">
+                    </div>
+                </div>
+                <div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Name</span>
+                        </div>
+                        <input id="item-name" ng-model="item.name" type="text" class="form-control" placeholder="Item Name"
+                            aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div>
+                    <div><label for="item-price"><span>Price</span></label></div>
+                    <div>
+                        <div><input type="range" id="item-price" min="0" max="10000" onchange="pr.value=value" value="1000"
+                                ng-model="item.price"></div>
+                        <div><output id="pr">1000</output></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="item-management-btns" class="btn-group" role="group" aria-label="Basic example">
+                <button class="btn btn-secondary btn-group-lg btn-success" ng-click="addItem()"><span>add</span></button>
+                <button class="btn btn-secondary btn-group-lg btn-danger" ng-click="deleteSelected()"><span>delete</span></button>
+                <button class="btn btn-secondary btn-group-lg btn-light" ng-click="editItem()"><span>edit</span></button>
+                <button class="btn btn-secondary btn-group-lg btn-dark" ng-click="updateItem()"><span>update</span></button>
+                <button class="btn btn-secondary btn-group-lg btn-primary" ng-click="sortList()"><span>sort</span></button>
+                <button class="btn btn-secondary btn-group-lg btn-warning" ng-click="loadList()"><span>load</span></button>
+                <button class="btn btn-secondary btn-group-lg btn-info" ng-click="saveList()"><span>save</span></button>
+            </div>
+        </div>
+
+
+
+        <div id="item-list-container">
+            <table class="table table-striped" id="item-list">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Select Status</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr ng-repeat="item in items">
+                        <th scope="row" id="itm-id">{{item.id}}</th>
+                        <td id="itm-name">{{item.name}}</td>
+                        <td id="itm-price">{{item.price}}</td>
+                        <td id="itm-selectStatus">
+                            <div ng-class="{red:item.isSelected}" ng-click="toggleSelectState(item.id)"></div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

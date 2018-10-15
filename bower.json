@@ -1,0 +1,25 @@
+{
+  "name": "master-management-page",
+  "authors": [
+    "Abhay Soni"
+  ],
+  "description": "item management",
+  "main": "",
+  "keywords": [
+    "Management"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.7.5",
+    "bootstrap": "^4.1.3"
+  }
+}
